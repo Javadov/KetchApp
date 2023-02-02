@@ -41,7 +41,7 @@
         <TextBox Grid.Row="6" Grid.Column="1" x:Name="ZipTextBox" Text="{Binding Postalcode}" Margin="0 0 0 10"/>
         <TextBlock Grid.Row="7" Grid.Column="0" Text="Ort: " HorizontalAlignment="Right"/>
         <TextBox Grid.Row="7" Grid.Column="1" x:Name="CityTextBox" Text="{Binding City}" Margin="0 0 0 10"/>
-        <Button Grid.Row="8" Grid.Column="1" Command="{Binding AddCommand}" Content="Add Contact" Width="100" HorizontalAlignment="Right" Margin="0 10 0 10"/>
+        <Button Grid.Row="8" Grid.Column="1" Command="{Binding AddCommand}" Content="Skapa Kontakt" Width="100" HorizontalAlignment="Right" Margin="0 10 0 10"/>
     </Grid>
 
 </UserControl>

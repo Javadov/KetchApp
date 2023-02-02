@@ -29,7 +29,7 @@ namespace WPFApp.MVVM.ViewModels
         private ObservableCollection<Contact> contacts = FileService.Contacts();
 
         [ObservableProperty]
-        private Contact selectedContact = Contact.selectedContact;
+        private Contact selectedContact = null!;
 
     }
 }

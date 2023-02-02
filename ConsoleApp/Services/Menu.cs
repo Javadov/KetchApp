@@ -125,7 +125,7 @@ public class Menu
         Console.Write("Postnummer: ");
         string postnummer = Console.ReadLine() ?? "";
 
-            while (!Regex.IsMatch(postnummer, @"^\d{6}$"))
+            while (!Regex.IsMatch(postnummer, @"^[0-9]{3}\s[0-9]{2}$"))
             {
                 Console.WriteLine(">> Ogiltig postnummer. Försök igen.  (Ex: 701 01)");
                 Console.WriteLine();
@@ -140,7 +140,7 @@ public class Menu
 
         contacts.Add(contact);
 
-        file.Save(FilePath, JsonConvert.SerializeObject(new { contacts }));
+        file.Save(FilePath, JsonConvert.SerializeObject(contacts));
 
         Console.WriteLine();
         Console.WriteLine(">> Att skapa kontakten lyckades!");

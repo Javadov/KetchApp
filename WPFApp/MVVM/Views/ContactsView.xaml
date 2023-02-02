@@ -23,18 +23,18 @@
         <ListView Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Contacts}" SelectionMode="Single" SelectedItem="{Binding SelectedContact}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding DisplayName}" Click="btn_Selected_Click" HorizontalAlignment="Stretch" Background="Transparent" BorderThickness="0"/>
+                    <TextBlock Text="{Binding DisplayName}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <!--
+       
         <StackPanel Grid.Row="1" Grid.Column="1"  Orientation="Horizontal">
             <TextBlock Text="First Name: " />
             <TextBlock Text="{Binding SelectedContact.DisplayName}" />
         </StackPanel>
-        -->
         
+        <!--
         <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SelectedContact}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -74,6 +74,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
+        -->
     </Grid>
 </UserControl>
