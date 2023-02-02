@@ -4,16 +4,55 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
+        xmlns:viewmodels="clr-namespace:WPFApp.MVVM.ViewModels"
+        xmlns:views="clr-namespace:WPFApp.MVVM.Views"
+        d:DataContext="{d:DesignInstance  Type=viewmodels:MainViewModel} "
+        
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600">
+        Title="MainWindow" Height="450" Width="800">
     <Grid Margin="30">
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="Välkommen till Adressboken" HorizontalAlignment="Center" Margin="30"/>
-            <Button Name="CreateContactButton" Content="Skapa en kontakt" Margin="180 10 180 10" Padding="5"/>
-            <Button Name="ShowAllContactsButton" Content="Visa alla kontakter" Margin="180 10 180 10" Padding="5"/>
-            <Button Name="ShowSpecificContactButton" Content="Visa en specifik kontakt" Margin="180 10 180 10" Padding="5"/>
-            <Button Name="DeleteContactButton" Content="Ta bort en specifik kontakt" Click="DeleteContactButton_Click" Margin="180 10 180 10" Padding="5"/>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="74" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!--
+        <ListView ItemsSource="{Binding Contacts}"
+              SelectedItem="{Binding SelectedContact}"
+              Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        <StackPanel Grid.Column="2">
+            <TextBlock Text="{Binding SelectedContact.Name}" />
+            <TextBlock Text="{Binding SelectedContact.Phone}" />
+            <TextBlock Text="{Binding SelectedContact.Email}" />
+            <Button Command="{Binding DeleteContactCommand}" Content="Delete" Width="100px"/>
+            <Button Command="{Binding EditContactCommand}" Content="Edit" Width="100px"/>
         </StackPanel>
+        -->
+        <ListView Grid.Column="0">
+            <Button Command="{Binding GoToAddContactCommand}" Content="Add" Width="50" Height="30" Margin="5"/>
+            <Button Command="{Binding GoToContactsCommand}" Content="List" Width="50" Height="30" Margin="5"/>
+        </ListView>
+
+        <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodels:HomeViewModel }">
+                    <views:HomeView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:AddContactViewModel }">
+                    <views:AddContactView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:ContactsViewModel }">
+                    <views:ContactsView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
     </Grid>
 
 </Window>

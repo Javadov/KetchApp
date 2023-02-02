@@ -18,6 +18,7 @@ namespace WPFApp
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -27,7 +28,7 @@ namespace WPFApp
 
         private void CreateContactButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationWindow.Navigate(new Uri("NewPage.xaml", UriKind.Relative));
+          
         }
 
         private void ShowAllContactsButton_CConsoleApplick(object sender, RoutedEventArgs e)

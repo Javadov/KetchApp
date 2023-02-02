@@ -4,9 +4,9 @@ using System.Text.RegularExpressions;
 
 namespace ConsoleApp.Services;
 
-internal class Menu
+public class Menu
 {
-    private List<Contact> contacts = new();
+    public List<Contact> contacts = new();
     private readonly File file = new();
 
     public string FilePath { get; set; } = null!;
