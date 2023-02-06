@@ -50,6 +50,15 @@ namespace WPFApp.Services
         {
             contacts.Remove(contact);
             Save();
+            Contacts();
+        }
+
+        private static void Edit(Contact selectedContact, Contact newContact)
+        {
+            int index = contacts.IndexOf(selectedContact);
+            contacts[index] = newContact;
+            Save();
+            Contacts();
         }
 
         public static ObservableCollection<Contact> Contacts()
@@ -57,7 +66,7 @@ namespace WPFApp.Services
             var items = new ObservableCollection<Contact>();
             foreach (var contact in contacts)
                 items.Add(contact);
-
+            Save();
             return items;
         }
     }

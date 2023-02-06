@@ -25,25 +25,5 @@ namespace WPFApp
         {
             InitializeComponent();
         }
-
-        private void CreateContactButton_Click(object sender, RoutedEventArgs e)
-        {
-          
-        }
-
-        private void ShowAllContactsButton_CConsoleApplick(object sender, RoutedEventArgs e)
-        {
-            // Kod för att visa alla kontakter
-        }
-
-        private void ShowSpecificContactButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Kod för att visa en specifik kontakt
-        }
-
-        private void DeleteContactButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Kod för att ta bort en specifik kontakt
-        }
     }
 }

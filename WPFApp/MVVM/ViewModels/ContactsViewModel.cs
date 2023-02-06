@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WPFApp.Models;
 using WPFApp.Services;
 
@@ -31,5 +32,15 @@ namespace WPFApp.MVVM.ViewModels
         [ObservableProperty]
         private Contact selectedContact = null!;
 
+        [RelayCommand]
+        public void Remove()
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure about deleting it?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                contacts.Remove(selectedContact);
+            }
+        }
     }
 }

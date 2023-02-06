@@ -4,10 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFApp.MVVM.Views"
-             xmlns:viewmodels="clr-namespace:WPFApp.MVVM.ViewModels"
+             xmlns:viewmodels="clr-namespace:WPFApp.MVVM.ViewModels" xmlns:simpleXamlContent="clr-namespace:WPFApp.Services"
              d:DataContext="{d:DesignInstance Type=viewmodels:ContactsViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <simpleXamlContent:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
+    </UserControl.Resources>
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -28,17 +33,17 @@
             </ListView.ItemTemplate>
         </ListView>
 
-       
-        <StackPanel Grid.Row="1" Grid.Column="1"  Orientation="Horizontal">
-            <TextBlock Text="First Name: " />
-            <TextBlock Text="{Binding SelectedContact.DisplayName}" />
-        </StackPanel>
-        
-        <!--
-        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SelectedContact}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="Tryck kontaktnamn i listan för mer information." Margin="50 0 50 0"/>
+
+        <DockPanel Grid.Row="1" Grid.Column="1">
+            <Border  BorderBrush="#ABADB3" BorderThickness="1" DockPanel.Dock="Top">
+                <StackPanel Background="#CFE7F5"  Orientation="Horizontal" Visibility="{Binding SelectedContact, Converter={StaticResource NullToVisibilityConverter}}">
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="210"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
@@ -50,30 +55,49 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
-                            <TextBlock Text="First Name: " />
-                            <TextBlock Text="{Binding SelectedContact.DisplayName}" />
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="15 0 0 0">
+                            <TextBlock Text="Förnamn: " />
+                            <TextBlock Text="{Binding SelectedContact.FirstName}" />
                         </StackPanel>
-                        <StackPanel Grid.Row="2" Orientation="Horizontal">
-                            <TextBlock Text="Last Name: " />
-                            <TextBlock Text="{Binding DisplayName }" />
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="15 0 0 0">
+                            <TextBlock Text="Efternamn: " />
+                            <TextBlock Text="{Binding SelectedContact.LastName }" />
                         </StackPanel>
-                        <StackPanel Grid.Row="3" Orientation="Horizontal">
-                            <TextBlock Text="Email: " />
-                            <TextBlock Text="{Binding Email}" />
+                        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="15 0 0 0">
+                            <TextBlock Text="E-postadress: " />
+                            <TextBlock Text="{Binding SelectedContact.Email}" />
                         </StackPanel>
-                        <StackPanel></StackPanel>
-                        <StackPanel></StackPanel>
-                        <StackPanel></StackPanel>
-                        <StackPanel></StackPanel>
-                        <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="0 10 0 10">
-                            <Button x:Name="btn_Edit" Click="btn_Edit_Click" Content="Edit" Margin="0 0 20 0"/>
-                            <Button x:Name="btn_Remove" Click="btn_Remove_Click" Content="Remove" Margin="20 0 0 0"/>
+                        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="15 0 0 0">
+                            <TextBlock Text="Telefonnummer: " />
+                            <TextBlock Text="{Binding SelectedContact.PhoneNumber}" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="15 0 0 0">
+                            <TextBlock Text="Gatuadress: " />
+                            <TextBlock Text="{Binding SelectedContact.StreetAddress}" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="15 0 0 0">
+                            <TextBlock Text="Postnummer: " />
+                            <TextBlock Text="{Binding SelectedContact.PostalCode}" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="15 0 0 0">
+                            <TextBlock Text="Ort: " />
+                            <TextBlock Text="{Binding SelectedContact.City}" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="15 0 0 0">
+                            <TextBlock />
+                        </StackPanel>
+                        <StackPanel Grid.Row="9" Orientation="Horizontal" Margin="5 10 0 10">
+                            <Button x:Name="btn_Edit" Click="btn_Edit_Click" Content="Edit" Width="80" Margin="0 0 20 0"/>
+                            <Button Command="{Binding RemoveCommand}" Content="Remove" Width="80" Margin="20 0 0 0"/>
                         </StackPanel>
                     </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        -->
+                    <Grid>
+                        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Text=" " />
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </DockPanel>
     </Grid>
 </UserControl>

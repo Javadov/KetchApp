@@ -29,29 +29,11 @@ namespace WPFApp.MVVM.Views
             InitializeComponent();
         }
 
-        private void btn_Edit_Click(object sender, RoutedEventArgs e)
-        { 
-            var button = (Button)sender;
-            var contact = (Contact)button.DataContext;
-        }
-
-        private void btn_Remove_Click(object sender, RoutedEventArgs e)
+        private Contact btn_Edit_Click(object sender, RoutedEventArgs e)
         {
             var button = (Button)sender;
             var contact = (Contact)button.DataContext;
-
-            MessageBoxResult result = MessageBox.Show("Are you sure about deleting it?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-            if (result == MessageBoxResult.Yes)
-            {
-                FileService.Remove(contact);
-            }
-        }
-        private Contact btn_Selected_Click(object sender, RoutedEventArgs e)
-        {
-            var button = (Button)sender;
-            var selectedContact = (Contact)button.DataContext;
-            return selectedContact;
+            return contact;
         }
     }
 }

@@ -4,40 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
+        xmlns:controls="clr-namespace:WPFApp.Resources"
         xmlns:viewmodels="clr-namespace:WPFApp.MVVM.ViewModels"
         xmlns:views="clr-namespace:WPFApp.MVVM.Views"
         d:DataContext="{d:DesignInstance  Type=viewmodels:MainViewModel} "
         
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="30">
+        Title="Addressbook by Javadov" Height="450" Width="800">
+    <Grid Margin="3">
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="74" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <!--
-        <ListView ItemsSource="{Binding Contacts}"
-              SelectedItem="{Binding SelectedContact}"
-              Grid.Column="1">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
-        
-        <StackPanel Grid.Column="2">
-            <TextBlock Text="{Binding SelectedContact.Name}" />
-            <TextBlock Text="{Binding SelectedContact.Phone}" />
-            <TextBlock Text="{Binding SelectedContact.Email}" />
-            <Button Command="{Binding DeleteContactCommand}" Content="Delete" Width="100px"/>
-            <Button Command="{Binding EditContactCommand}" Content="Edit" Width="100px"/>
-        </StackPanel>
-        -->
-        <ListView Grid.Column="0">
-            <Button Command="{Binding GoToAddContactCommand}" Content="Add" Width="50" Height="30" Margin="5"/>
-            <Button Command="{Binding GoToContactsCommand}" Content="List" Width="50" Height="30" Margin="5"/>
+
+        <ListView Grid.Column="0" BorderThickness="0" Margin="0 45 0 0">
+            <Button Command="{Binding GoToAddContactCommand}" Style="{StaticResource navButton}"  Content="Add" Width="50" Height="50" Margin="5"/>
+            <Button Command="{Binding GoToContactsCommand}" Style="{StaticResource navButton}"  Content="List" Width="50" Height="50" Margin="5"/>
         </ListView>
 
         <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}">
